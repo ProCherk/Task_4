@@ -25,10 +25,23 @@ namespace Task_4
 
                     cash1.GetInfo();
 
-                    cash1.SumMoney(a, 45.5);
+                    Console.WriteLine("Введіть суму, для додавання до основної суми" + "\n" + "Сума: ");
+                    double b = Convert.ToDouble(Console.ReadLine());
+
+                    cash1.SumMoney(a, b);
+
+                    Console.WriteLine("Введіть суму у копійках, для переведення її у гривні" + "\n" + "Сума: ");
+                    double c = Convert.ToDouble(Console.ReadLine());
 
                     cash1.ToCoin(a);
-                    cash1.ToPaperMoney(23345);
+                    cash1.ToPaperMoney(c);
+
+                    //Запис вихідних данних у файл
+
+                    FileStream final = new FileStream("Final MoneyInfo.txt", FileMode.Open, FileAccess.Write);
+                    StreamWriter finr = new StreamWriter(final);
+                    finr.WriteLine(Convert.ToString(a));
+                    final.Close();
                     break;
 
                 }
@@ -41,15 +54,23 @@ namespace Task_4
                     double a = Convert.ToDouble(info);
                     fr.Close();
 
+                    Console.WriteLine($"Грошова сума - {a}");
 
                     Money cash1 = new Money(a);
 
                     cash1.GetInfo();
+                    
+                    Console.WriteLine("Введіть суму, для додавання до основної суми" + "\n" + "Сума: ");
+                    double b = Convert.ToDouble(Console.ReadLine());
 
-                    cash1.SumMoney(a, 45.5);
+                    cash1.SumMoney(a, b);
+
+                    Console.WriteLine("Введіть суму у копійках, для переведення її у гривні" + "\n" + "Сума: ");
+                    double c = Convert.ToDouble(Console.ReadLine());
 
                     cash1.ToCoin(a);
-                    cash1.ToPaperMoney(23345);
+                    cash1.ToPaperMoney(c);
+
                     break;
                 }
                 else
@@ -58,17 +79,16 @@ namespace Task_4
                     enter = Console.ReadLine();
                 }
             } while (true);
-
-            
         }
     }
 
     class Money
     {
-        private double p_money; 
-        private double coin;
-        private double summa;
-        
+        private double p_money { get; set; } 
+        private double coin { get; set; }
+        private double summa { get; set; }
+
+
         //Введення грошової суми 
         public Money(double a) {
             if (a > 0)
