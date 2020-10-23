@@ -84,10 +84,21 @@ namespace Task_4
 
     class Money
     {
-        private double p_money { get; set; } 
-        private double coin { get; set; }
-        private double summa { get; set; }
-
+        private double p_money
+        {
+            get { return p_money; }
+            set { p_money = value; }
+        }
+        private double coin
+        {
+            get { return coin; }
+            set { coin = value; }
+        }
+        private double summa
+        {
+            get { return summa; }
+            set { summa = value; }
+        }
 
         //Введення грошової суми 
         public Money(double a) {
